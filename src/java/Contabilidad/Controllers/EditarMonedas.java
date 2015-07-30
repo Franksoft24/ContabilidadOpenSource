@@ -19,8 +19,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Frankmer
  */
-@WebServlet(name = "RegistrarMonedas", urlPatterns = {"/RegistrarMonedas"})
-public class RegistrarMonedas extends HttpServlet {
+@WebServlet(name = "EditarMonedas", urlPatterns = {"/EditarMonedas"})
+public class EditarMonedas extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,9 +36,10 @@ public class RegistrarMonedas extends HttpServlet {
         String Descripcion = request.getParameter("Descripcion");
         Double UltimaTasa = Double.parseDouble(request.getParameter("Tasa"));
         String Estado = request.getParameter("Estado");
-        TipoMoneda Moneda = new TipoMoneda(Descripcion, UltimaTasa, Estado);
-        MonedaDAO.agregarMoneda(Moneda);
-        response.sendRedirect("VIEWS/Monedas/List.jsp");
+        int ID = Integer.parseInt(request.getParameter("MonedaID"));
+        TipoMoneda Moneda = new TipoMoneda(ID, Descripcion, UltimaTasa, Estado);
+        MonedaDAO.ActualizarMoneda(Moneda);
+        response.sendRedirect("VIEWS/Monedas/details.jsp?ID="+ID);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

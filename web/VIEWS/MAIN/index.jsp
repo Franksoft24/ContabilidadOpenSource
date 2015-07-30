@@ -27,7 +27,7 @@
         <h3>Tasas de monedas:</h3>
         <p>
             <%
-                List<TipoMoneda> tiposMonedas = MonedaDAO.tiposMonedaForInput();
+                List<TipoMoneda> tiposMonedas = MonedaDAO.SeleccionarMonedaActiva();
                 for(TipoMoneda tipoMoneda:tiposMonedas){
                     out.print(tipoMoneda.getDescripcion()+": "+tipoMoneda.getUltimaTasa()+"<br />");
                 }

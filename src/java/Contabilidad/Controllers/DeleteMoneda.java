@@ -6,7 +6,6 @@
 package Contabilidad.Controllers;
 
 import Contabilidad.DAO.MonedaDAO;
-import Contabilidad.Model.TipoMoneda;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -19,8 +18,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Frankmer
  */
-@WebServlet(name = "RegistrarMonedas", urlPatterns = {"/RegistrarMonedas"})
-public class RegistrarMonedas extends HttpServlet {
+@WebServlet(name = "DeleteMoneda", urlPatterns = {"/DeleteMoneda"})
+public class DeleteMoneda extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,11 +32,8 @@ public class RegistrarMonedas extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String Descripcion = request.getParameter("Descripcion");
-        Double UltimaTasa = Double.parseDouble(request.getParameter("Tasa"));
-        String Estado = request.getParameter("Estado");
-        TipoMoneda Moneda = new TipoMoneda(Descripcion, UltimaTasa, Estado);
-        MonedaDAO.agregarMoneda(Moneda);
+        int ID = Integer.parseInt(request.getParameter("ID"));
+        MonedaDAO.eliminarMoneda(ID);
         response.sendRedirect("VIEWS/Monedas/List.jsp");
     }
 
