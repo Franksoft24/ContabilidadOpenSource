@@ -38,8 +38,9 @@ public class RegistrarEntrada extends HttpServlet {
             throws ServletException, IOException {
         String Descripcion = request.getParameter("Descripcion");
         String ModuloContabilidad = request.getParameter("ModuloContabilidad");
-        int IdCuentaContable = Integer.parseInt(request.getParameter("IdCuentaContable"));
-        String Origen = request.getParameter("Origen");
+        int IdCuentaContableDB = Integer.parseInt(request.getParameter("IdCuentaContableDB"));
+        int IdCuentaContableCR = Integer.parseInt(request.getParameter("IdCuentaContableCR"));
+        String Origen = "DB";
         int Usuario = Integer.parseInt(request.getParameter("Usuario"));
         Date FechaAsiento = null;
         try{    
@@ -48,11 +49,13 @@ public class RegistrarEntrada extends HttpServlet {
             ex.printStackTrace();
         }
         Double MontoAsiento = Double.parseDouble(request.getParameter("MontoAsiento"));
-        String Estado = request.getParameter("Estado");
+        int Estado = 1;
         int IdTipoMoneda = Integer.parseInt(request.getParameter("IdTipoMoneda"));
-        
-        EntradaContable entradaContable = new EntradaContable(Descripcion, ModuloContabilidad, IdCuentaContable, Origen, Usuario, FechaAsiento, MontoAsiento, Estado, IdTipoMoneda);
-        EntradaContableDAO.agregarEntradaContable(entradaContable);
+        int NumeroDocumento = EntradaContableDAO.UltimoDocumentoContable() + 1;
+        EntradaContable entradaContableDB = new EntradaContable(Descripcion, ModuloContabilidad, IdCuentaContableDB, "DB", Usuario, FechaAsiento, MontoAsiento, Estado, IdTipoMoneda, NumeroDocumento);
+        EntradaContable entradaContableCR = new EntradaContable(Descripcion, ModuloContabilidad, IdCuentaContableCR, "CR", Usuario, FechaAsiento, MontoAsiento, Estado, IdTipoMoneda, NumeroDocumento);
+        EntradaContableDAO.agregarEntradaContable(entradaContableDB);
+        EntradaContableDAO.agregarEntradaContable(entradaContableCR);
         response.sendRedirect("VIEWS/EntradasContables/List.jsp");
         
     }

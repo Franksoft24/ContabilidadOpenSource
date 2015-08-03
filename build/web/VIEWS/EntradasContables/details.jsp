@@ -22,12 +22,14 @@
 <%@page import="Contabilidad.DAO.EntradaContableDAO" %>
 <%@page import="Contabilidad.Model.Usuario" %>
 <%@page import="Contabilidad.DAO.UsuarioDAO" %>
+<%@page import="Contabilidad.Model.Estado" %>
+<%@page import="Contabilidad.DAO.EstadoDAO" %>
 <%@page import="java.util.Date" %>
 <%@page import="java.util.List" %>
 <%
     String Descripcion = null;
-    String ModuloContabilidad =null, Estado = null, Origen =null, Moneda=null, Cuenta = null, Usuario=null;
-    int ID = 0; 
+    String ModuloContabilidad =null, Origen =null, Moneda=null, Cuenta = null, Estado = null, Usuario=null;
+    int  ID = 0, NumDocumento=0; 
     double MontoAsiento = 0.00;
     Date FechaAsiento = null;
     try{
@@ -44,15 +46,19 @@
             }
             List<Usuario> usuarios = UsuarioDAO.selectUser(entradaContable.getUsuario());
             for(Usuario usuario:usuarios){
-                Usuario = usuario.getNickName();
+                Usuario = usuario.getUsuario();
             }
             Descripcion = entradaContable.getDescripcion();
             ModuloContabilidad= entradaContable.getModuloContabilidad();
-            Estado = entradaContable.getEstado();
+            List<Estado> Estados = EstadoDAO.SeleccionarEstados(entradaContable.getEstado());
+            for (Estado estado:Estados){
+                Estado = estado.getDescripcion();
+            }
             Origen = entradaContable.getOrigen();
             ID= entradaContable.getIdEntradaContable();
             MontoAsiento = entradaContable.getMontoAsiento();
             FechaAsiento = entradaContable.getFechaAsiento();
+            NumDocumento = entradaContable.getNumeroDocumento();
         }
     }catch(Exception e){
         response.sendRedirect("List.jsp");
@@ -72,6 +78,7 @@
         <div class="identificador">Monto del Asiento: <span class="contenido"><% out.print(MontoAsiento); %></span></div>
         <div class="identificador">Estado: <span class="contenido"><% out.print(Estado); %></span></div>
         <div class="identificador">Tipo de moneda: <span class="contenido"><% out.print(Moneda); %></span></div>
+        <div class="identificador">Numero de documento: <span class="contenido"><% out.print(NumDocumento); %></span></div>
     </div>
 </section>
                     

@@ -108,15 +108,15 @@
             <div class="input">
                 <input type="text" name="Balance" placeholder="0.00" value="<% out.print(Balance); %>" readonly="true">
             </div>
-            <div class="title">
+            <!--div class="title">
                 Estado:
             </div>
             <div class="input">
-                <select name="Estado" id="Estado">
+                <select name="N/A" id="Estado">
                     <option value="A">Activa</option>
                     <option value="I">Inactiva</option>
                 </select>
-            </div>
+            </div-->
             <div class="input">
                 <input type="submit" value="Registrar" class="button">
                 <input type="hidden" name="CuentaContableID" value="<%out.print(ID);%>">
@@ -126,7 +126,7 @@
 </section>
                     <script type="text/javascript">
                         function asignvalues(){
-                            document.getElementById('Estado').value = "<%out.print(Estado);%>";
+                            //document.getElementById('Estado').value = "<%out.print(Estado);%>";
                             document.getElementById('CuentaMayor').value = <%out.print(CuentaMayor);%>;
                             document.getElementById('TipoCuenta').value = <%out.print(TipoCuenta_);%>;
                             document.getElementById('PermiteTransacciones').value="<%out.print(PermiteTransacciones);%>";

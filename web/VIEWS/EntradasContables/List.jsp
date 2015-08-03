@@ -25,9 +25,10 @@
             <!--th>Modulo:</th-->
             <th>Cuenta contable:</th>
             <th>Fecha:</th>
+            <th>Origen:</th>
             <th>Monto:</th>
             <!--th>Estado:</th-->
-            <th>Tipo Moneda</th>
+            <!--th>Tipo Moneda</th-->
             <th><a href="add.jsp" class="link b-green">&nbsp;&nbsp;+ Nueva entrada &nbsp;&nbsp;</a></th>
         </tr>
         <%
@@ -41,10 +42,11 @@
                             + "<td>"+entradaContable.getDescripcion()+"</td>"
                             + "<td>"+cuentaContable.getDescripcion()+"</td>"
                             + "<td>"+entradaContable.getFechaAsiento()+"</td>"
-                            + "<td>"+entradaContable.getMontoAsiento()+"</td>"
-                            + "<td>"+tipoMoneda.getDescripcion()+"</td>"
-                            + "<td><a href=\"details.jsp?ID="+entradaContable.getIdEntradaContable()+"\" class=\"link b-blue\"> ... Detalles </a>"
-                            + "<a href=\"edit.jsp?ID="+entradaContable.getIdEntradaContable()+"\" class=\"link b-yellow\"> * Editar </a>"
+                            + "<td>"+entradaContable.getOrigen()+"</td>"
+                            + "<td>"+entradaContable.getMontoAsiento()+" "+tipoMoneda.getDescripcion()+"</td>"
+                            + "<!--td>"+tipoMoneda.getDescripcion()+"</td-->"
+                            + "<td><a href=\"details.jsp?ID="+entradaContable.getIdEntradaContable()+"\" class=\"link b-blue\"> ... Detalles </a>&nbsp;"
+                            + "<a href=\"edit.jsp?ID="+entradaContable.getIdEntradaContable()+"\" class=\"link b-yellow\"> * Editar </a>&nbsp;"
                             + "<a href=\"delete.jsp?ID="+entradaContable.getIdEntradaContable()+"\" class=\"link b-red\"> - Eliminar</a></td>"
                             + "</tr>");
                     }

@@ -39,7 +39,7 @@ public class RegistrarCuentaC extends HttpServlet {
         int Nivel = Integer.parseInt(request.getParameter("Nivel"));
         int CuentaMayor = Integer.parseInt(request.getParameter("CuentaMayor"));
         double Balance = Double.parseDouble(request.getParameter("Balance"));
-        String Estado = request.getParameter("Estado");
+        String Estado = "A";
         CuentaContable cuentaContable = new CuentaContable(Descripcion, TipoCuenta, PermiteTransacciones, Nivel, CuentaMayor, Balance, Estado);
         CuentaContableDAO.agregarCuentaContable(cuentaContable);
         response.sendRedirect("VIEWS/CuentasContables/List.jsp");

@@ -13,6 +13,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import Contabilidad.DAO.EntradaContableDAO;
+import Contabilidad.Model.EntradaContable;
+import java.util.List;
 
 /**
  *
@@ -32,8 +34,11 @@ public class DeleteEntrada extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        int ID = Integer.parseInt(request.getParameter("ID"));
-        EntradaContableDAO.eliminarEntradaContable(ID);
+        int NumDocumento = Integer.parseInt(request.getParameter("ND"));
+        List<EntradaContable> entradasContables = EntradaContableDAO.PrepararSentenciaDelete(NumDocumento);
+        for(EntradaContable entradaContable: entradasContables){
+            EntradaContableDAO.desactivateEntradaContable(entradaContable.getIdEntradaContable());
+        }
         response.sendRedirect("VIEWS/EntradasContables/List.jsp");
     }
 

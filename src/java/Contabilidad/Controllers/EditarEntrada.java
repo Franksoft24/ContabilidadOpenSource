@@ -48,11 +48,11 @@ public class EditarEntrada extends HttpServlet {
             ex.printStackTrace();
         }
         Double MontoAsiento = Double.parseDouble(request.getParameter("MontoAsiento"));
-        String Estado = request.getParameter("Estado");
+        int Estado = 1;
         int IdTipoMoneda = Integer.parseInt(request.getParameter("IdTipoMoneda"));
         int IdEntradaContable = Integer.parseInt(request.getParameter("IdEntradaContable"));
-        
-        EntradaContable entradaContable = new EntradaContable(IdEntradaContable, Descripcion, ModuloContabilidad, IdCuentaContable, Origen, Usuario, FechaAsiento, MontoAsiento, Estado, IdTipoMoneda);
+        int NumDocumento = Integer.parseInt(request.getParameter("ND"));
+        EntradaContable entradaContable = new EntradaContable(IdEntradaContable, Descripcion, ModuloContabilidad, IdCuentaContable, Origen, Usuario, FechaAsiento, MontoAsiento, Estado, IdTipoMoneda,NumDocumento);
         EntradaContableDAO.actualizarEntradaContable(entradaContable);
         response.sendRedirect("VIEWS/EntradasContables/details.jsp?ID="+IdEntradaContable);
     }

@@ -39,7 +39,7 @@ public class EditarCuentaC extends HttpServlet {
         int Nivel = Integer.parseInt(request.getParameter("Nivel"));
         int CuentaMayor = Integer.parseInt(request.getParameter("CuentaMayor"));
         double Balance = Double.parseDouble(request.getParameter("Balance"));
-        String Estado = request.getParameter("Estado");
+        String Estado = "A";
         int ID = Integer.parseInt(request.getParameter("CuentaContableID"));
         CuentaContable cuentaContable = new CuentaContable(ID, Descripcion, TipoCuenta, PermiteTransacciones, Nivel, CuentaMayor, Balance, Estado);
         CuentaContableDAO.actualizarCuentaContable(cuentaContable);

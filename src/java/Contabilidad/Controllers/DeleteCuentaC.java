@@ -13,6 +13,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import Contabilidad.DAO.EntradaContableDAO;
+import Contabilidad.Model.CuentaContable;
+import Contabilidad.Model.EntradaContable;
+import java.util.List;
 
 /**
  *
@@ -33,7 +37,12 @@ public class DeleteCuentaC extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         int ID = Integer.parseInt(request.getParameter("ID"));
-        CuentaContableDAO.eliminarCuentaContable(ID);
+        CuentaContableDAO.DesactivarCuentaContable(ID);
+        List<EntradaContable> entradasContables = EntradaContableDAO.PrepararSentenciaDeletePorCuenta(ID);
+        for(EntradaContable entradaContable:entradasContables){
+            EntradaContableDAO.desactivateEntradaContable(entradaContable.getIdEntradaContable());
+        }
+        //CuentaContableDAO.eliminarCuentaContable(ID);
         response.sendRedirect("VIEWS/CuentasContables/List.jsp");
     }
 

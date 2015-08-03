@@ -42,7 +42,7 @@ public class CuentaContableDAO {
     public static List<CuentaContable> ListarCuentas(){
         List<CuentaContable> cuentasContables = new ArrayList<CuentaContable>();
         Connection con = ConexionDB.getConnectionDB();
-        String query = "Select * from contabilidad.CuentasContables";
+        String query = "Select * from contabilidad.CuentasContables where Estado = 'A'";
         try{
             ResultSet rs = con.prepareStatement(query).executeQuery();
             while(rs.next()){
@@ -110,9 +110,24 @@ public class CuentaContableDAO {
             ex.printStackTrace();
         }
     }
-    public static void eliminarCuentaContable(Integer Id){
+    /*public static void eliminarCuentaContable(Integer Id){
         Connection con = ConexionDB.getConnectionDB();
         String query = "DELETE FROM contabilidad.cuentascontables WHERE IdCuentaContable = ? and Nivel>2";
+        try{
+            PreparedStatement ps = con.prepareStatement(query);
+            ps.setInt(1,Id);
+            ps.executeUpdate();
+            ps.close();
+            con.close();
+        }catch(SQLException ex){
+            ex.printStackTrace();
+        }
+    }*/
+    
+    public static void DesactivarCuentaContable(Integer Id){
+        Connection con = ConexionDB.getConnectionDB();
+        String query = "UPDATE contabilidad.cuentascontables SET Estado = 'I' "
+                + "where IdCuentaContable = ? and Nivel = 3";
         try{
             PreparedStatement ps = con.prepareStatement(query);
             ps.setInt(1,Id);

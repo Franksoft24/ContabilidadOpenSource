@@ -24,7 +24,7 @@
 <%
     String Descripcion = null;
     String ModuloContabilidad =null, Estado = null, Origen =null;
-    int ID = 0, IdCuentaContable =0, IdTipoMoneda =0; 
+    int ID = 0, IdCuentaContable =0, IdTipoMoneda =0, NumDocumento = 0; 
     double MontoAsiento = 0.00;
     try{
         int IdEntradasContable = Integer.parseInt(request.getParameter("ID"));
@@ -33,12 +33,13 @@
         for(EntradaContable entradaContable:entradasContables){
             Descripcion = entradaContable.getDescripcion();
             ModuloContabilidad= entradaContable.getModuloContabilidad();
-            Estado = entradaContable.getEstado();
+            //Estado = entradaContable.getEstado();
             Origen = entradaContable.getOrigen();
             ID= entradaContable.getIdEntradaContable();
             IdCuentaContable = entradaContable.getCuentaContable();
             IdTipoMoneda=entradaContable.getTipoMoneda();
             MontoAsiento = entradaContable.getMontoAsiento();
+            NumDocumento = entradaContable.getNumeroDocumento();
         }
     }catch(Exception e){
         response.sendRedirect("List.jsp");
@@ -74,31 +75,31 @@
             <div class="input">
                 <select name="IdCuentaContable" id="IdCuentaContable">
                     <%
-                        List<CuentaContable> cuentasContables = CuentaContableDAO.ListarCuentas();
+                        List<CuentaContable> cuentasContables = CuentaContableDAO.SeleccionarCuentaInput();
                         for(CuentaContable cuentaContable:cuentasContables){
                             out.print("<option value="+cuentaContable.getIdCuentaContable()+">"+cuentaContable.getDescripcion()+"</option>");
                         }
                     %>
                 </select>
             </div>
-            <!--div class="title">
+            <div class="title">
                 Origen:
             </div>
             <div class="input">
-                <select name="Origen">
+                <select name="Origen" id="origen">
                     <option value="DB">Debito</option>
                     <option value="CR">Credito</option>
                 </select>
-            </div-->
-            <div class="title">
+            </div>
+            <!--div class="title">
                 Estado:
             </div>
             <div class="input">
-                <select name="Estado" id="Estado">
+                <select name="N/A" id="Estado">
                     <option value="A">Activa</option>
                     <option value="I">Inactiva</option>
                 </select>
-            </div>
+            </div-->
             <div class="title">
                 Moneda:
             </div>
@@ -116,8 +117,9 @@
             <div class="input">
                 <input type="submit" value="Modificar" class="button">
                 <input type="hidden" name="FechaAsiento" placeholder="Fecha Asiento" id="getDateinput">
-                <input type="hidden" name="Origen" placeholder="Origen" value="US">
+                <!--input type="hidden" name="Origen" placeholder="Origen" value="US"-->
                 <input type="hidden" name="IdEntradaContable" value="<%out.print(ID);%>">
+                <input type="hidden" name="ND" value="<%out.print(NumDocumento);%>">
                 <input type="hidden" name="Usuario" placeholder="Usuario" value="${sessionScope.usrcodI}">
             </div>
         </div>
@@ -129,9 +131,9 @@
                             document.getElementById('getDateinput').value = now.getFullYear()+"-"+(now.getMonth()+1)+"-"+now.getDate();
                         }
                         function asignvalues(){
-                            document.getElementById('Estado').value = "<%out.print(Estado);%>";
                             document.getElementById('IdCuentaContable').value = <%out.print(IdCuentaContable);%>;
                             document.getElementById('IdTipoMoneda').value = <%out.print(IdTipoMoneda);%>;
+                            document.getElementById('origen').value = '<%out.print(Origen);%>';
                         }
                         getDateNow();
                         asignvalues();

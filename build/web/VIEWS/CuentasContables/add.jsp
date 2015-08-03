@@ -85,15 +85,15 @@
             <div class="input">
                 <input type="text" name="Balance" placeholder="0.00" required>
             </div>
-            <div class="title">
+            <!--div class="title">
                 Estado:
             </div>
             <div class="input">
-                <select name="Estado">
+                <select name="N/A">
                     <option value="A">Activa</option>
                     <option value="I">Inactiva</option>
                 </select>
-            </div>
+            </div-->
             <div class="input">
                 <input type="submit" value="Registrar" class="button b-green">
             </div>

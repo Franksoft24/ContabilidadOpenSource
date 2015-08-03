@@ -42,8 +42,12 @@
             for(CuentaContable cuentaMayor:cuentasMayor){
                 CuentaMayor = cuentaMayor.getDescripcion();
             }
-            
+            if(cuentaContable.getNivel()<3){
+                response.sendRedirect("List.jsp");
+            }
         }
+        
+            
     }catch(Exception e){
         response.sendRedirect("List.jsp");
     }

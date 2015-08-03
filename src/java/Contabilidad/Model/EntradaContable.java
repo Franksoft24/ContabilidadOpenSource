@@ -18,17 +18,18 @@ public class EntradaContable {
     protected String ModuloContabilidad;
     protected Integer CuentaContable;
     protected String Origen;
-    protected Integer Usuario;
     protected Date FechaAsiento;
     protected Double MontoAsiento;
-    protected String Estado;
+    protected Integer Estado;
     protected Integer TipoMoneda;
+    protected Integer Usuario;
+    protected Integer NumeroDocumento;
     
     public EntradaContable(){
         
     }
     
-    public EntradaContable(Integer IdEntradaContable, String Descripcion, String ModuloContabilidad, Integer CuentaContable, String Origen, Integer Usuario, Date FechaAsiento, Double MontoAsiento, String Estado, Integer TipoMoneda){
+    public EntradaContable(Integer IdEntradaContable, String Descripcion, String ModuloContabilidad, Integer CuentaContable, String Origen, Integer Usuario, Date FechaAsiento, Double MontoAsiento, Integer Estado, Integer TipoMoneda, Integer NumeroDocumento){
         this.IdEntradaContable = IdEntradaContable;
         this.Descripcion = Descripcion;
         this.ModuloContabilidad = ModuloContabilidad;
@@ -39,9 +40,10 @@ public class EntradaContable {
         this.MontoAsiento = MontoAsiento;
         this.Estado = Estado;
         this.TipoMoneda = TipoMoneda;
+        this.NumeroDocumento = NumeroDocumento;
     }
     
-    public EntradaContable(String Descripcion, String ModuloContabilidad, Integer CuentaContable, String Origen, Integer Usuario, Date FechaAsiento, Double MontoAsiento, String Estado, Integer TipoMoneda){
+    public EntradaContable(String Descripcion, String ModuloContabilidad, Integer CuentaContable, String Origen, Integer Usuario, Date FechaAsiento, Double MontoAsiento, Integer Estado, Integer TipoMoneda, Integer NumeroDocumento){
         this.Descripcion = Descripcion;
         this.ModuloContabilidad = ModuloContabilidad;
         this.CuentaContable = CuentaContable;
@@ -51,6 +53,7 @@ public class EntradaContable {
         this.MontoAsiento = MontoAsiento;
         this.Estado = Estado;
         this.TipoMoneda = TipoMoneda;
+        this.NumeroDocumento = NumeroDocumento;
     }
     
     public Integer getIdEntradaContable(){
@@ -117,11 +120,11 @@ public class EntradaContable {
         this.MontoAsiento = MontoAsiento;
     }
     
-    public String getEstado(){
+    public Integer getEstado(){
         return Estado;
     }
     
-    public void setEstado(String Estado){
+    public void setEstado(Integer Estado){
         this.Estado = Estado;
     }
     
@@ -131,6 +134,14 @@ public class EntradaContable {
     
     public void setTipoMoneda(Integer TipoMoneda){
         this.TipoMoneda = TipoMoneda;
+    }
+    
+    public Integer getNumeroDocumento(){
+        return NumeroDocumento;
+    }
+    
+    public void setNumeroDocumento(Integer NumeroDocumento){
+        this.NumeroDocumento = NumeroDocumento;
     }
     
 }
