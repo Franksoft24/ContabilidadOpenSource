@@ -35,14 +35,14 @@ public class login extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String NickName = request.getParameter("NickName");
+        String NickName = request.getParameter("Usuario");
         String Password = request.getParameter("pass");
         //Usuario usuario = new Usuario(NickName, Password);
         List<Usuario> usuarios = UsuarioDAO.validarUsuario(NickName, Password);
         if(!usuarios.isEmpty()){
             for(Usuario usuario : usuarios){
                 HttpSession session = request.getSession();
-                session.setAttribute("NNuser", usuario.getNickName());
+                session.setAttribute("NNuser", usuario.getUsuario());
                 session.setAttribute("usrcodI", usuario.getIdUsuario());
                 session.setAttribute("rol", usuario.getRol());
                 response.sendRedirect("/ContabilidadIntegracionOpenSource/VIEWS/MAIN");

@@ -13,6 +13,8 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import Contabilidad.DAO.EntradaContableDAO;
+import Contabilidad.Model.EntradaContable;
 
 /**
  *
@@ -37,7 +39,15 @@ public class NominaWebService {
     @Path("/saludame/{param1}")
     public String saludame(@PathParam("param1") String param1){
         System.out.println("He recibido el param1: "+param1);
-        return "Informaacion recibida.";
+        return "Información recibida.";
+    }
+    
+    @GET
+    @Consumes("text/plain")
+    @Path("/saludame/{param1}/agradecimiento/{param2}")
+    public String saludame(@PathParam("param1") String param1, @PathParam("param2") String param2){
+        System.out.println("He recibido el saludame de: "+param1+" para: "+param2);
+        return "Ambas informaciones recibida.";
     }
     
     @WebMethod(operationName = "hello")

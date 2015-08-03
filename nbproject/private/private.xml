@@ -3,9 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/alberto/Desktop/ContabilidadIntegracionOpenSource/src/java/Contabilidad/WebService/WsTestClient.java</file>
-            <file>file:/C:/Users/alberto/Desktop/ContabilidadIntegracionOpenSource/web/WEB-INF/web.xml</file>
-            <file>file:/C:/Users/alberto/Desktop/ContabilidadIntegracionOpenSource/src/java/Contabilidad/WebService/NominaWebService.java</file>
+            <file>file:/C:/Users/Frankmer/Documents/NetBeansProjects/ContabilidadIntegracionOpenSource/src/java/Contabilidad/Model/EntradaContable.java</file>
+            <file>file:/C:/Users/Frankmer/Documents/NetBeansProjects/ContabilidadIntegracionOpenSource/web/VIEWS/Login/index.jsp</file>
+            <file>file:/C:/Users/Frankmer/Documents/NetBeansProjects/ContabilidadIntegracionOpenSource/web/VIEWS/Layout/header.jsp</file>
+            <file>file:/C:/Users/Frankmer/Documents/NetBeansProjects/ContabilidadIntegracionOpenSource/src/java/Contabilidad/Model/Usuario.java</file>
+            <file>file:/C:/Users/Frankmer/Documents/NetBeansProjects/ContabilidadIntegracionOpenSource/src/java/Contabilidad/WebService/NominaWebService.java</file>
+            <file>file:/C:/Users/Frankmer/Documents/NetBeansProjects/ContabilidadIntegracionOpenSource/src/java/Contabilidad/DAO/UsuarioDAO.java</file>
+            <file>file:/C:/Users/Frankmer/Documents/NetBeansProjects/ContabilidadIntegracionOpenSource/src/java/Contabilidad/Controllers/login.java</file>
+            <file>file:/C:/Users/Frankmer/Documents/NetBeansProjects/ContabilidadIntegracionOpenSource/src/java/Contabilidad/Controllers/LogOut.java</file>
         </group>
     </open-files>
 </project-private>

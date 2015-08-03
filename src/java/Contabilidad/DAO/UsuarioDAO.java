@@ -20,17 +20,20 @@ import java.util.List;
  */
 public class UsuarioDAO {
     
-    public static List<Usuario> validarUsuario(String NickName, String Pass){
+    public static List<Usuario> validarUsuario(String Usuario, String Pass){
         List<Usuario> usuarios = new ArrayList<Usuario>();
         Connection con = ConexionDB.getConnectionDB();
-        String query = "SELECT IdUsuario, Rol, NickName FROM contabilidad.Usuarios where NickName = '" + NickName + "' and Password = '" + Pass + "'";
+        String query = "SELECT IdUsuario, idrol, Usuario FROM contabilidad.usuario "
+                + "where Usuario = '" + Usuario + "' "
+                + "and password = '" + Pass + "' "
+                + "and estado = 1";
         try{
             ResultSet rs = con.prepareStatement(query).executeQuery();
             while(rs.next()){
                 Usuario usuario = new Usuario();
                 usuario.setIdUsuario(rs.getInt("IdUsuario"));
-                usuario.setRol(rs.getInt("Rol"));
-                usuario.setNickName(rs.getString("NickName"));
+                usuario.setRol(rs.getInt("idrol"));
+                usuario.setUsuario(rs.getString("Usuario"));
                 usuarios.add(usuario);
                 
             }
@@ -47,16 +50,17 @@ public class UsuarioDAO {
     public static List<Usuario> selectUser(Integer id){
         List<Usuario> usuarios = new ArrayList<Usuario>();
         Connection con = ConexionDB.getConnectionDB();
-        String query = "SELECT * FROM contabilidad.Usuarios where IdUsuario = " + id;
+        String query = "SELECT * FROM contabilidad.usuario where IdUsuario = " + id;
         try{
             ResultSet rs = con.prepareStatement(query).executeQuery();
             while(rs.next()){
                 Usuario usuario = new Usuario();
                 usuario.setIdUsuario(rs.getInt("IdUsuario"));
-                usuario.setNickName(rs.getString("NickName"));
-                usuario.setMail(rs.getString("Mail"));
-                usuario.setPassword(rs.getString("Password"));
-                usuario.setRol(rs.getInt("Rol"));
+                usuario.setUsuario(rs.getString("Usuario"));
+                usuario.setMail(rs.getString("mail"));
+                //usuario.setPassword(rs.getString("password"));
+                usuario.setRol(rs.getInt("idrol"));
+                usuario.setEstado(rs.getInt("estado"));
                 usuarios.add(usuario);
             }
             rs.close();
@@ -70,13 +74,14 @@ public class UsuarioDAO {
     
     public static void AgregarUsuario(Usuario usuario){
         Connection con = ConexionDB.getConnectionDB();
-        String query = "INSERT INTO contabilidad.Usuarios(NickName, Mail, Password, Rol) VALUES (?,?,?,?)";
+        String query = "INSERT INTO contabilidad.usuario(Usuario, mail, password, idrol, estado) VALUES (?,?,?,?,?)";
         try{
             PreparedStatement ps = con.prepareStatement(query);
-            ps.setString(1, usuario.getNickName());
+            ps.setString(1, usuario.getUsuario());
             ps.setString(2, usuario.getMail());
             ps.setString(3, usuario.getPassword());
             ps.setInt(4, usuario.getRol());
+            ps.setInt(5, usuario.getEstado());
             ps.executeUpdate();
             ps.close();
             con.close();
@@ -87,7 +92,7 @@ public class UsuarioDAO {
     
     public static void EditarRolOrMailUsuario(Usuario usuario){
         Connection con = ConexionDB.getConnectionDB();
-        String query = "UPDATE contabilidad.Usuarios SET Rol = ?, Mail = ? WHERE IdUsuario = ?";
+        String query = "UPDATE contabilidad.usuario SET Rol = ?, Mail = ? WHERE IdUsuario = ?";
         try{
             PreparedStatement ps = con.prepareStatement(query);
             ps.setInt(1, usuario.getRol());
@@ -103,7 +108,7 @@ public class UsuarioDAO {
     
     public static void CambiarPasswordUsuario(Usuario usuario){
         Connection con = ConexionDB.getConnectionDB();
-        String query = "UPDATE contabilidad.Usuarios SET Password = ? WHERE IdUsuario = ?";
+        String query = "UPDATE contabilidad.usuario SET Password = ? WHERE IdUsuario = ?";
         try{
             PreparedStatement ps = con.prepareStatement(query);
             ps.setString(1, usuario.getPassword());

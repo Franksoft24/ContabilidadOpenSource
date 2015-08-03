@@ -12,39 +12,44 @@ package Contabilidad.Model;
 public class Usuario {
     
     private Integer IdUsuario;
-    protected String NickName;
+    protected String Usuario;
     protected String Mail;
     protected String Password;
     protected Integer Rol;
+    protected Integer Estado;
     
     public Usuario(){
     
     }
     
-    public Usuario(Integer IdUsuario, Integer Rol, String NickName){
+    public Usuario(Integer IdUsuario, Integer Rol, String Usuario, Integer Estado){
         this.IdUsuario = IdUsuario;
-        this.NickName = NickName;
+        this.Usuario = Usuario;
         this.Rol = Rol;
+        this.Estado = Estado;
     }
     
-    public Usuario(Integer IdUsuario, String NickName, String Mail, String Password, Integer Rol){
+    public Usuario(Integer IdUsuario, String Usuario, String Mail, String Password, Integer Rol, Integer Estado){
         this.IdUsuario = IdUsuario;
-        this.NickName = NickName;
+        this.Usuario = Usuario;
         this.Mail = Mail;
         this.Password = Password;
         this.Rol = Rol;
+        this.Estado = Estado;
     }
     
-    public Usuario(String NickName, String Mail, String Password, Integer Rol){
-        this.NickName = NickName;
+    public Usuario(String Usuario, String Mail, String Password, Integer Rol, Integer Estado){
+        this.Usuario = Usuario;
         this.Mail = Mail;
         this.Password = Password;
         this.Rol = Rol;
+        this.Estado = Estado;
     }
     
-    public Usuario(String NickName, String Password){
-        this.NickName = NickName;
+    public Usuario(String Usuario, String Password, Integer Estado){
+        this.Usuario = Usuario;
         this.Password = Password;
+        this.Estado = Estado;
     }
     
     public Integer getIdUsuario(){
@@ -55,12 +60,12 @@ public class Usuario {
         this.IdUsuario = IdUsuario;
     }
     
-    public String getNickName(){
-        return NickName;
+    public String getUsuario(){
+        return Usuario;
     }
     
-    public void setNickName(String NickName){
-        this.NickName = NickName;
+    public void setUsuario(String Usuario){
+        this.Usuario = Usuario;
     }
     
     public String getMail(){
@@ -85,6 +90,14 @@ public class Usuario {
     
     public void setRol(Integer Rol){
         this.Rol = Rol;
+    }
+    
+    public Integer getEstado(){
+        return Estado;
+    }
+    
+    public void setEstado(Integer Estado){
+        this.Estado = Estado;
     }
     
 }

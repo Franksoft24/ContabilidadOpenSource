@@ -14,7 +14,8 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Log-in</title>
+        <link rel="icon" type="image/png" href="../../resources/IMG/fav-icon.png">
+        <title>Acceder - Contabilidad</title>
         <link rel="stylesheet" href="../../resources/CSS/loginstyle.css"/>
         <script type="text/javascript" src="../../resources/JS/script.js"></script>
     </head>
@@ -28,7 +29,7 @@
                             <spam class="hidden">Usuario:</spam>
                         </div>
                         <div class="input">
-                            <input type="text" name="NickName" placeholder="Ususario:" id="usuario" onkeyup="inputTitle('Usuario:',0,'usuario')" required>
+                            <input type="text" name="Usuario" placeholder="Ususario:" id="usuario" onkeyup="inputTitle('Usuario:',0,'usuario')" required>
                         </div>
                         <div class="title">
                             <spam class="hidden">Contraseña:</spam>

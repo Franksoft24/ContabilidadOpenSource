@@ -26,11 +26,11 @@ public class WsTestClient {
 //		WebResource webResource = client
 //		   .resource("http://104.131.181.21/DCPws/rest/moneda/cod/EUR");
                 
-//                WebResource webResource = client
-//		   .resource("http://104.131.181.21/DCPws/rest/indiceI/periodo/201501");
-                
                 WebResource webResource = client
-		   .resource("http://104.131.181.21/DCPws/rest/historialC/40222760239");
+		   .resource("http://104.131.181.21/DCPws/rest/indiceI/periodo/201501");
+                
+                /*WebResource webResource = client
+		   .resource("http://104.131.181.21/DCPws/rest/historialC/40222760239");*/
  
 		ClientResponse response = webResource.accept("application/json")
                    .get(ClientResponse.class);
