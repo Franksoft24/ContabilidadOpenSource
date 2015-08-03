@@ -34,7 +34,7 @@ public class DeleteEntrada extends HttpServlet {
             throws ServletException, IOException {
         int ID = Integer.parseInt(request.getParameter("ID"));
         EntradaContableDAO.eliminarEntradaContable(ID);
-        response.sendRedirect("VIEWS/EntradaContables/List.jsp");
+        response.sendRedirect("VIEWS/EntradasContables/List.jsp");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

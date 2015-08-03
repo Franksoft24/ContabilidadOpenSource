@@ -123,4 +123,31 @@ public class CuentaContableDAO {
             ex.printStackTrace();
         }
     }
+    
+    public static List<CuentaContable> SeleccionarCuentaInput(){
+        List<CuentaContable> cuentasContables = new ArrayList<CuentaContable>();
+        Connection con = ConexionDB.getConnectionDB();
+        String query = "Select IdCuentaContable,Descripcion  from contabilidad.CuentasContables "
+                + "where Nivel = 3 and PermiteTransacciones = 'SI' and Estado = 'A'";
+        try{
+            ResultSet rs = con.prepareStatement(query).executeQuery();
+            while(rs.next()){
+                CuentaContable cuentaContable = new CuentaContable();
+                cuentaContable.setIdCuentaContable(rs.getInt("IdCuentaContable"));
+                cuentaContable.setDescripcion(rs.getString("Descripcion"));
+                /*cuentaContable.setTipoCuenta(rs.getInt("TipodeCuenta"));
+                cuentaContable.setPermiteTransacciones(rs.getString("PermiteTransacciones"));
+                cuentaContable.setNivel(rs.getInt("Nivel"));
+                cuentaContable.setCuentaMayor(rs.getInt("CuentaMayor"));
+                cuentaContable.setBalance(rs.getDouble("Balance"));
+                cuentaContable.setEstado(rs.getString("Estado"));*/
+                cuentasContables.add(cuentaContable);
+            }
+            rs.close();
+            con.close();
+        }catch(SQLException ex){
+            ex.printStackTrace();
+        }
+        return cuentasContables;
+    }
 }

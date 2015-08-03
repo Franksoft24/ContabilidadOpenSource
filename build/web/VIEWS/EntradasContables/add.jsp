@@ -44,12 +44,12 @@
             </div>
             
             <div class="title">
-                Cuenta Contable:
+                Cuenta Contable debito:
             </div>
             <div class="input">
                 <select name="IdCuentaContable">
                     <%
-                        List<CuentaContable> cuentasContables = CuentaContableDAO.ListarCuentas();
+                        List<CuentaContable> cuentasContables = CuentaContableDAO.SeleccionarCuentaInput();
                         for(CuentaContable cuentaContable:cuentasContables){
                             out.print("<option value="+cuentaContable.getIdCuentaContable()+">"+cuentaContable.getDescripcion()+"</option>");
                         }
@@ -57,7 +57,22 @@
                 </select>
                 <!--input type="text" name="ModuloContabilidad" placeholder="Modulo de Contabilidad" id="ModuloContabilidad" onkeyup="inputTitle('Modulo de Contabilidad:',1,'ModuloContabilidad')" required-->
             </div>
-            <!--div class="title">
+                
+            <div class="title">
+                Cuenta Contable credito:
+            </div>
+            <div class="input">
+                <select name="IdCuentaContable">
+                    <%
+                        
+                        for(CuentaContable cuentaContable:cuentasContables){
+                            out.print("<option value="+cuentaContable.getIdCuentaContable()+">"+cuentaContable.getDescripcion()+"</option>");
+                        }
+                    %>
+                </select>
+                <!--input type="text" name="ModuloContabilidad" placeholder="Modulo de Contabilidad" id="ModuloContabilidad" onkeyup="inputTitle('Modulo de Contabilidad:',1,'ModuloContabilidad')" required-->
+            </div>
+            <div class="title">
                 Origen:
             </div>
             <div class="input">
@@ -65,11 +80,11 @@
                     <option value="DB">Debito</option>
                     <option value="CR">Credito</option>
                 </select>
-            </div-->
-            <div class="title">
+            </div>
+            <div class="title hidden">
                 Estado:
             </div>
-            <div class="input">
+            <div class="input hidden">
                 <select name="Estado">
                     <option value="A">Activa</option>
                     <option value="I">Inactiva</option>
@@ -92,7 +107,7 @@
             <div class="input">
                 <input type="submit" value="Registrar" class="button b-green">
                 <input type="hidden" name="FechaAsiento" placeholder="Fecha Asiento" id="getDateinput">
-                <input type="hidden" name="Origen" placeholder="Origen" value="US">
+                <!--input type="hidden" name="Origen" placeholder="Origen" value="US"-->
                 <input type="hidden" name="Usuario" placeholder="Usuario" value="${sessionScope.usrcodI}">
             </div>
         </div>
