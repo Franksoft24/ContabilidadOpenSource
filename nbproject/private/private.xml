@@ -3,14 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Frankmer/Documents/NetBeansProjects/ContabilidadIntegracionOpenSource/src/java/Contabilidad/Controllers/DeleteCuentaC.java</file>
-            <file>file:/C:/Users/Frankmer/Documents/NetBeansProjects/ContabilidadIntegracionOpenSource/src/java/Contabilidad/Controllers/EditarCuentaC.java</file>
-            <file>file:/C:/Users/Frankmer/Documents/NetBeansProjects/ContabilidadIntegracionOpenSource/web/VIEWS/CuentasContables/add.jsp</file>
-            <file>file:/C:/Users/Frankmer/Documents/NetBeansProjects/ContabilidadIntegracionOpenSource/src/java/Contabilidad/DAO/CuentaContableDAO.java</file>
-            <file>file:/C:/Users/Frankmer/Documents/NetBeansProjects/ContabilidadIntegracionOpenSource/src/java/Contabilidad/Controllers/DeleteEntrada.java</file>
-            <file>file:/C:/Users/Frankmer/Documents/NetBeansProjects/ContabilidadIntegracionOpenSource/web/VIEWS/CuentasContables/delete.jsp</file>
-            <file>file:/C:/Users/Frankmer/Documents/NetBeansProjects/ContabilidadIntegracionOpenSource/web/VIEWS/CuentasContables/edit.jsp</file>
-            <file>file:/C:/Users/Frankmer/Documents/NetBeansProjects/ContabilidadIntegracionOpenSource/src/java/Contabilidad/Controllers/RegistrarCuentaC.java</file>
+            <file>file:/C:/Users/Frankmer/Documents/NetBeansProjects/ContabilidadIntegracionOpenSource/src/java/Contabilidad/DAO/ConexionDB.java</file>
         </group>
     </open-files>
 </project-private>

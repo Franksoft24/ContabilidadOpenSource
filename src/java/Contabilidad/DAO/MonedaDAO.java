@@ -20,7 +20,7 @@ public class MonedaDAO {
     public static List<TipoMoneda> tiposMonedaForInput(){
         List<TipoMoneda> tiposMonedas = new ArrayList<TipoMoneda>();
         Connection con = ConexionDB.getConnectionDB();
-        String query = "SELECT Descripcion, IdTipoMoneda, UltimaTasa FROM contabilidad.tiposmoneda where Estado = 'A'";
+        String query = "SELECT Descripcion, IdTipoMoneda, UltimaTasa FROM tiposmoneda where Estado = 'A'";
         try{
             ResultSet rs = con.prepareStatement(query).executeQuery();
             while(rs.next()){
@@ -40,7 +40,7 @@ public class MonedaDAO {
     public static List<TipoMoneda> SeleccionarMonedaActiva(){
         List<TipoMoneda> tiposMonedas = new ArrayList<TipoMoneda>();
         Connection con = ConexionDB.getConnectionDB();
-        String query = "SELECT Descripcion, UltimaTasa FROM contabilidad.tiposmoneda where Estado = 'A'";
+        String query = "SELECT Descripcion, UltimaTasa FROM tiposmoneda where Estado = 'A'";
         try{
             ResultSet rs = con.prepareStatement(query).executeQuery();
             while(rs.next()){
@@ -59,7 +59,7 @@ public class MonedaDAO {
     public static List<TipoMoneda> SeleccionarMoneda(Integer ID){
         List<TipoMoneda> tiposMonedas = new ArrayList<TipoMoneda>();
         Connection con = ConexionDB.getConnectionDB();
-        String query = "SELECT * FROM contabilidad.tiposmoneda where IdTipoMoneda="+ID;
+        String query = "SELECT * FROM tiposmoneda where IdTipoMoneda="+ID;
         try{
             ResultSet rs = con.prepareStatement(query).executeQuery();
             while(rs.next()){
@@ -80,7 +80,7 @@ public class MonedaDAO {
     public static List<TipoMoneda> ListarMonedas(){
         List<TipoMoneda> tiposMonedas = new ArrayList<TipoMoneda>();
         Connection con = ConexionDB.getConnectionDB();
-        String query = "SELECT * FROM contabilidad.tiposmoneda";
+        String query = "SELECT * FROM tiposmoneda";
         try{
             ResultSet rs = con.prepareStatement(query).executeQuery();
             while(rs.next()){
@@ -100,7 +100,7 @@ public class MonedaDAO {
     }
     public static void agregarMoneda(TipoMoneda Moneda){
         Connection con = ConexionDB.getConnectionDB();
-        String query = "INSERT INTO contabilidad.tiposmoneda (Descripcion, UltimaTasa,"
+        String query = "INSERT INTO tiposmoneda (Descripcion, UltimaTasa,"
                 + "Estado) VALUES (?,?,?)";
         try{
             PreparedStatement ps = con.prepareStatement(query);
@@ -116,7 +116,7 @@ public class MonedaDAO {
     }
     public static void ActualizarMoneda(TipoMoneda Moneda){
         Connection con = ConexionDB.getConnectionDB();
-        String query = "UPDATE contabilidad.tiposmoneda SET Descripcion = ?, UltimaTasa=?,"
+        String query = "UPDATE tiposmoneda SET Descripcion = ?, UltimaTasa=?,"
                 + "Estado = ? where IdTipoMoneda = ?";
         try{
             PreparedStatement ps = con.prepareStatement(query);
@@ -133,7 +133,7 @@ public class MonedaDAO {
     }
     public static void eliminarMoneda(Integer Id){
         Connection con = ConexionDB.getConnectionDB();
-        String query = "DELETE FROM contabilidad.tiposmoneda WHERE IdTipoMoneda = ?";
+        String query = "DELETE FROM tiposmoneda WHERE IdTipoMoneda = ?";
         try{
             PreparedStatement ps = con.prepareStatement(query);
             ps.setInt(1,Id);

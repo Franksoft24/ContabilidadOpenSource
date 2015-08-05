@@ -23,7 +23,7 @@ public class UsuarioDAO {
     public static List<Usuario> validarUsuario(String Usuario, String Pass){
         List<Usuario> usuarios = new ArrayList<Usuario>();
         Connection con = ConexionDB.getConnectionDB();
-        String query = "SELECT IdUsuario, idrol, Usuario FROM contabilidad.usuario "
+        String query = "SELECT IdUsuario, idrol, Usuario FROM usuario "
                 + "where Usuario = '" + Usuario + "' "
                 + "and password = '" + Pass + "' "
                 + "and estado = 1";
@@ -50,7 +50,7 @@ public class UsuarioDAO {
     public static List<Usuario> selectUser(Integer id){
         List<Usuario> usuarios = new ArrayList<Usuario>();
         Connection con = ConexionDB.getConnectionDB();
-        String query = "SELECT * FROM contabilidad.usuario where IdUsuario = " + id;
+        String query = "SELECT * FROM usuario where IdUsuario = " + id;
         try{
             ResultSet rs = con.prepareStatement(query).executeQuery();
             while(rs.next()){
@@ -74,7 +74,7 @@ public class UsuarioDAO {
     
     public static void AgregarUsuario(Usuario usuario){
         Connection con = ConexionDB.getConnectionDB();
-        String query = "INSERT INTO contabilidad.usuario(Usuario, mail, password, idrol, estado) VALUES (?,?,?,?,?)";
+        String query = "INSERT INTO usuario(Usuario, mail, password, idrol, estado) VALUES (?,?,?,?,?)";
         try{
             PreparedStatement ps = con.prepareStatement(query);
             ps.setString(1, usuario.getUsuario());
@@ -92,7 +92,7 @@ public class UsuarioDAO {
     
     public static void EditarRolOrMailUsuario(Usuario usuario){
         Connection con = ConexionDB.getConnectionDB();
-        String query = "UPDATE contabilidad.usuario SET Rol = ?, Mail = ? WHERE IdUsuario = ?";
+        String query = "UPDATE usuario SET Rol = ?, Mail = ? WHERE IdUsuario = ?";
         try{
             PreparedStatement ps = con.prepareStatement(query);
             ps.setInt(1, usuario.getRol());
@@ -108,7 +108,7 @@ public class UsuarioDAO {
     
     public static void CambiarPasswordUsuario(Usuario usuario){
         Connection con = ConexionDB.getConnectionDB();
-        String query = "UPDATE contabilidad.usuario SET Password = ? WHERE IdUsuario = ?";
+        String query = "UPDATE usuario SET Password = ? WHERE IdUsuario = ?";
         try{
             PreparedStatement ps = con.prepareStatement(query);
             ps.setString(1, usuario.getPassword());

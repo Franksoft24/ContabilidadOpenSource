@@ -19,7 +19,7 @@ public class EstadoDAO {
     public static List<Estado> SeleccionarEstados(int ID){
         List<Estado> Estados = new ArrayList<Estado>();
         Connection con = ConexionDB.getConnectionDB();
-        String query="Select * From contabilidad.estado where IdEstado =" +ID;
+        String query="Select * From estado where IdEstado =" +ID;
         try{
             ResultSet rs = con.prepareStatement(query).executeQuery();
             while(rs.next()){

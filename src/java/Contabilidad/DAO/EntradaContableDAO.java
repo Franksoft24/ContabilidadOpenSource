@@ -20,7 +20,7 @@ import java.util.List;
 public class EntradaContableDAO {
     public static void agregarEntradaContable(EntradaContable entradaContable){
         Connection con = ConexionDB.getConnectionDB();
-        String query = "INSERT INTO contabilidad.entradacontable (Descripcion, ModuloContabilidad,"
+        String query = "INSERT INTO entradacontable (Descripcion, ModuloContabilidad,"
                 + "IdCuentaContable, Origen, FechaAsiento, MontoAsiento, Idestado, IdTipoMoneda, IdUsuario, NumDocumento"
                 + ") VALUES (?,?,?,?,?,?,?,?,?,?)";
         try{
@@ -45,7 +45,7 @@ public class EntradaContableDAO {
     public static List<EntradaContable> MostrarEntradasContables(){
         List<EntradaContable> entradasContables = new ArrayList<EntradaContable>();
         Connection con  = ConexionDB.getConnectionDB();
-        String query = "SELECT * FROM contabilidad.entradacontable where Idestado = 1 ORDER BY IdEntradaContable DESC";//Esta es una estructura de tipo lifo  ORDER BY IdEntradaContable DESC
+        String query = "SELECT * FROM entradacontable where Idestado = 1 ORDER BY IdEntradaContable DESC";//Esta es una estructura de tipo lifo  ORDER BY IdEntradaContable DESC
         try{
             ResultSet rs = con.prepareStatement(query).executeQuery();
             while(rs.next()){
@@ -72,7 +72,7 @@ public class EntradaContableDAO {
     }
     public static void actualizarEntradaContable(EntradaContable entradaContable){
         Connection con = ConexionDB.getConnectionDB();
-        String query = "UPDATE contabilidad.entradacontable SET Descripcion = ?, ModuloContabilidad=?,"
+        String query = "UPDATE entradacontable SET Descripcion = ?, ModuloContabilidad=?,"
                 + "IdCuentaContable = ?, Origen = ?, IdUsuario = ?, FechaAsiento = ?, MontoAsiento = ?,"
                 + "IdTipoMoneda = ? where IdEntradaContable = ?";
         try{
@@ -109,7 +109,7 @@ public class EntradaContableDAO {
     public static List<EntradaContable> PrepararSentenciaDelete(int ND){
         List<EntradaContable> entradasContables = new ArrayList<EntradaContable>();
         Connection con = ConexionDB.getConnectionDB();
-        String query = "select IdEntradaContable from contabilidad.entradacontable where NumDocumento ="+ND;
+        String query = "select IdEntradaContable from entradacontable where NumDocumento ="+ND;
         try{
             ResultSet rs = con.prepareStatement(query).executeQuery();
             while(rs.next()){
@@ -128,7 +128,7 @@ public class EntradaContableDAO {
     public static List<EntradaContable> PrepararSentenciaDeletePorCuenta(int ID){
         List<EntradaContable> entradasContables = new ArrayList<EntradaContable>();
         Connection con = ConexionDB.getConnectionDB();
-        String query = "select IdEntradaContable from contabilidad.entradacontable where IdCuentaContable ="+ID;
+        String query = "select IdEntradaContable from entradacontable where IdCuentaContable ="+ID;
         try{
             ResultSet rs = con.prepareStatement(query).executeQuery();
             while(rs.next()){
@@ -146,7 +146,7 @@ public class EntradaContableDAO {
     
     public static void desactivateEntradaContable(int ID){
         Connection con = ConexionDB.getConnectionDB();
-        String query = "UPDATE contabilidad.entradacontable SET Idestado = 3 where IdEntradaContable = ?";
+        String query = "UPDATE entradacontable SET Idestado = 3 where IdEntradaContable = ?";
         try{
             PreparedStatement ps = con.prepareStatement(query);
             ps.setInt(1, ID);
@@ -161,7 +161,7 @@ public class EntradaContableDAO {
     public static List<EntradaContable> SeleccionarEntradaContable(int ID){
         List<EntradaContable> entradasContables = new ArrayList<EntradaContable>();
         Connection con  = ConexionDB.getConnectionDB();
-        String query = "SELECT * FROM contabilidad.entradacontable WHERE IdEntradaContable = " +ID;//Esta es una estructura de tipo lifo
+        String query = "SELECT * FROM entradacontable WHERE IdEntradaContable = " +ID;//Esta es una estructura de tipo lifo
         try{
             ResultSet rs = con.prepareStatement(query).executeQuery();
             while(rs.next()){
@@ -190,7 +190,7 @@ public class EntradaContableDAO {
     public static Integer UltimoDocumentoContable(){
         int ultimoNum = 0;
         Connection con = ConexionDB.getConnectionDB();
-        String query = "select MAX(NumDocumento) from contabilidad.entradacontable";
+        String query = "select MAX(NumDocumento) from entradacontable";
         try{
             ResultSet rs = con.prepareStatement(query).executeQuery();
             while(rs.next()){

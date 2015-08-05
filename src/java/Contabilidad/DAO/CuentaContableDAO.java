@@ -20,7 +20,7 @@ import java.util.List;
 public class CuentaContableDAO {
     public static void agregarCuentaContable(CuentaContable cuentaContable){
         Connection con = ConexionDB.getConnectionDB();
-        String query = "INSERT INTO contabilidad.cuentascontables (Descripcion, TipodeCuenta,"
+        String query = "INSERT INTO cuentascontables (Descripcion, TipodeCuenta,"
                 + "PermiteTransacciones, Nivel, CuentaMayor, Balance, Estado"
                 + ") VALUES (?,?,?,?,?,?,?)";
         try{
@@ -42,7 +42,7 @@ public class CuentaContableDAO {
     public static List<CuentaContable> ListarCuentas(){
         List<CuentaContable> cuentasContables = new ArrayList<CuentaContable>();
         Connection con = ConexionDB.getConnectionDB();
-        String query = "Select * from contabilidad.CuentasContables where Estado = 'A'";
+        String query = "Select * from cuentascontables where Estado = 'A'";
         try{
             ResultSet rs = con.prepareStatement(query).executeQuery();
             while(rs.next()){
@@ -67,7 +67,7 @@ public class CuentaContableDAO {
     public static List<CuentaContable> SeleccionarCuenta(Integer ID){
         List<CuentaContable> cuentasContables = new ArrayList<CuentaContable>();
         Connection con = ConexionDB.getConnectionDB();
-        String query = "Select * from contabilidad.CuentasContables where IdCuentaContable = " +ID;
+        String query = "Select * from cuentascontables where IdCuentaContable = " +ID;
         try{
             ResultSet rs = con.prepareStatement(query).executeQuery();
             while(rs.next()){
@@ -91,7 +91,7 @@ public class CuentaContableDAO {
     }
     public static void actualizarCuentaContable(CuentaContable cuentaContable){
         Connection con = ConexionDB.getConnectionDB();
-        String query = "UPDATE contabilidad.cuentascontables SET Descripcion = ?, TipodeCuenta=?,"
+        String query = "UPDATE cuentascontables SET Descripcion = ?, TipodeCuenta=?,"
                 + "PermiteTransacciones = ?, Nivel = ?, CuentaMayor = ?,"
                 + "Estado = ? where IdCuentaContable = ?";
         try{
@@ -126,7 +126,7 @@ public class CuentaContableDAO {
     
     public static void DesactivarCuentaContable(Integer Id){
         Connection con = ConexionDB.getConnectionDB();
-        String query = "UPDATE contabilidad.cuentascontables SET Estado = 'I' "
+        String query = "UPDATE cuentascontables SET Estado = 'I' "
                 + "where IdCuentaContable = ? and Nivel = 3";
         try{
             PreparedStatement ps = con.prepareStatement(query);
@@ -142,7 +142,7 @@ public class CuentaContableDAO {
     public static List<CuentaContable> SeleccionarCuentaInput(){
         List<CuentaContable> cuentasContables = new ArrayList<CuentaContable>();
         Connection con = ConexionDB.getConnectionDB();
-        String query = "Select IdCuentaContable,Descripcion  from contabilidad.CuentasContables "
+        String query = "Select IdCuentaContable,Descripcion  from cuentascontables "
                 + "where Nivel = 3 and PermiteTransacciones = 'SI' and Estado = 'A'";
         try{
             ResultSet rs = con.prepareStatement(query).executeQuery();

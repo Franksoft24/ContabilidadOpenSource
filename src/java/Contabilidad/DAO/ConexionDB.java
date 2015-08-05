@@ -15,9 +15,9 @@ import java.sql.SQLException;
  */
 public class ConexionDB {
     private static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
-    private static final String DB_URL = "jdbc:mysql://localhost:3308/contabilidad";
-    private static final String USER = "root";
-    private static final String PASS = "root";
+    private static final String DB_URL = "jdbc:mysql://db4free.net:3306/contabilidad0924";
+    private static final String USER = "franksoft";
+    private static final String PASS = "franksoftdb";
     
     private ConexionDB(){
     }    

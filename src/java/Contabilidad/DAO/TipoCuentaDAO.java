@@ -19,7 +19,7 @@ public class TipoCuentaDAO {
     public static List<TipoCuenta> TiposCuentaForInput(){
         List<TipoCuenta> tiposCuentas = new ArrayList<TipoCuenta>();
         Connection con = ConexionDB.getConnectionDB();
-        String query="Select Descripcion, IdTipoCuenta From contabilidad.tiposcuentas where Estado = 'A'";
+        String query="Select Descripcion, IdTipoCuenta From tiposcuentas where Estado = 'A'";
         try{
             ResultSet rs = con.prepareStatement(query).executeQuery();
             while(rs.next()){
@@ -38,7 +38,7 @@ public class TipoCuentaDAO {
     public static List<TipoCuenta> seleccionarCuentaForInput(Integer ID){
         List<TipoCuenta> tiposCuentas = new ArrayList<TipoCuenta>();
         Connection con = ConexionDB.getConnectionDB();
-        String query="Select Descripcion, IdTipoCuenta From contabilidad.tiposcuentas where Estado = 'A' and IdTipoCuenta ="+ID;
+        String query="Select Descripcion, IdTipoCuenta From tiposcuentas where Estado = 'A' and IdTipoCuenta ="+ID;
         try{
             ResultSet rs = con.prepareStatement(query).executeQuery();
             while(rs.next()){
