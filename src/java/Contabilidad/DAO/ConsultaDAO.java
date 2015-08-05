@@ -7,6 +7,7 @@ package Contabilidad.DAO;
 
 import Contabilidad.Consultas.EntradaContable;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -47,5 +48,17 @@ public class ConsultaDAO {
         }
         return entradasContables;
     }
-    
+    public static void EjecutarPase(Date fecha){
+        Connection con = ConexionDB.getConnectionDB();
+        String query ="CALL Usp_PaseCuentasMaestras(?)";
+        try{
+            PreparedStatement ps = con.prepareStatement(query);
+            ps.setDate(1,fecha != null ? new java.sql.Date(fecha.getTime()) : null);
+            ps.executeUpdate();
+            ps.close();
+            con.close();
+        }catch(SQLException ex){
+            ex.printStackTrace();
+        }
+    }
 }

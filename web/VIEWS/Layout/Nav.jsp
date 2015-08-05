@@ -18,7 +18,7 @@
                     + " <a href=\"../EntradasContables/consult.jsp\" class=\"link\"><li>Consultar Entradas</li></a>"
                     + " <a href=\"../CuentasContables/List.jsp\" class=\"link\"><li>Cuentas Contables</li></a>"
                     + " <a href=\"../Monedas/List.jsp\" class=\"link\"><li>Monedas</li></a>"
-                    + " <a href=\"#\" class=\"link\"><li>Realizar pase contable</li></a>"
+                    + " <a href=\"../PaseContable/\" class=\"link\"><li>Realizar pase contable</li></a>"
                     + " <a href=\"#\" class=\"link\"><li>Uruarios</li></a>"
                     + "</ul>"
                     + "</nav>");
