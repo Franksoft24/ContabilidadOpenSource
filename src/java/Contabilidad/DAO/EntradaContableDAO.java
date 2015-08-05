@@ -11,6 +11,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -93,19 +94,19 @@ public class EntradaContableDAO {
             ex.printStackTrace();
         }
     }
-    /*public static void eliminarEntradaContable(Integer Id){
-        Connection con = ConexionDB.getConnectionDB();
-        String query = "DELETE FROM contabilidad.entradacontable WHERE IdEntradaContable = ?";
-        try{
-            PreparedStatement ps = con.prepareStatement(query);
-            ps.setInt(1,Id);
-            ps.executeUpdate();
-            ps.close();
-            con.close();
-        }catch(SQLException ex){
-            ex.printStackTrace();
-        }
-    }*/
+//    public static void eliminarEntradaContable(Integer Id){
+//        Connection con = ConexionDB.getConnectionDB();
+//        String query = "DELETE FROM contabilidad.entradacontable WHERE IdEntradaContable = ?";
+//        try{
+//            PreparedStatement ps = con.prepareStatement(query);
+//            ps.setInt(1,Id);
+//            ps.executeUpdate();
+//            ps.close();
+//            con.close();
+//        }catch(SQLException ex){
+//            ex.printStackTrace();
+//        }
+//    }
     public static List<EntradaContable> PrepararSentenciaDelete(int ND){
         List<EntradaContable> entradasContables = new ArrayList<EntradaContable>();
         Connection con = ConexionDB.getConnectionDB();
@@ -186,7 +187,7 @@ public class EntradaContableDAO {
         }
         return entradasContables;
     }
-    
+       
     public static Integer UltimoDocumentoContable(){
         int ultimoNum = 0;
         Connection con = ConexionDB.getConnectionDB();
