@@ -50,7 +50,7 @@ public class NominaWebService {
         //int Usuario = 0;
         Calendar c2 = new GregorianCalendar();
         String dia = Integer.toString(c2.get(Calendar.DATE));
-        String mes = Integer.toString(c2.get(Calendar.MONTH));
+        String mes = Integer.toString(c2.get(Calendar.MONTH)) +1;
         String annio = Integer.toString(c2.get(Calendar.YEAR));
         String getFechaAsiento= annio+"-"+mes+"-"+dia;
         DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");;
