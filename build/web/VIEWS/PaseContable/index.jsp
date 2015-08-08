@@ -18,7 +18,7 @@
 <jsp:include page="../Layout/header.jsp" />
 <jsp:include page="../Layout/Nav.jsp"/>
 <section>
-    <form method="Post">
+    <form method="post" action="../../EjecutarPase">
         <div class="responsive-form">
             <div class="title">
                 Fecha:

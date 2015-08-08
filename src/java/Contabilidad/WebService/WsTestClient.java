@@ -8,6 +8,12 @@ package Contabilidad.WebService;
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.WebResource;
+import com.sun.org.apache.xerces.internal.parsers.DOMParser;
+import java.io.FileInputStream;
+import javax.swing.text.Document;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import org.xml.sax.InputSource;
 
 /**
  *
@@ -23,16 +29,16 @@ public class WsTestClient {
  
 		Client client = Client.create();
  
-//		WebResource webResource = client
-//		   .resource("http://104.131.181.21/DCPws/rest/moneda/cod/EUR");
-                
                 WebResource webResource = client
-		   .resource("http://104.131.181.21/DCPws/rest/indiceI/periodo/201501");
+                   .resource("http://104.131.181.21/DCPws/rest/moneda/cod/EUR");
+                
+//                WebResource webResource = client
+//		   .resource("http://104.131.181.21/DCPws/rest/indiceI/periodo/201501");
                 
                 /*WebResource webResource = client
 		   .resource("http://104.131.181.21/DCPws/rest/historialC/40222760239");*/
  
-		ClientResponse response = webResource.accept("application/json")
+		ClientResponse response = webResource.accept("application/xml")
                    .get(ClientResponse.class);
  
 		if (response.getStatus() != 200) {
@@ -44,6 +50,13 @@ public class WsTestClient {
  
 		System.out.println("Output from Server .... \n");
 		System.out.println(output);
+                DocumentBuilder documentBuilder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
+                Document doc = (Document) documentBuilder.parse(new InputSource(new FileInputStream(output)));
+                DOMParser parser = new DOMParser();
+                parser.parse(new InputSource(new FileInputStream(output)));
+//                Document doc = parser.getDocument();  
+//                output ;
+                System.out.println("");
  
 	  } catch (Exception e) {
  
